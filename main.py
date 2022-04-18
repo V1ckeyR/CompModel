@@ -37,7 +37,7 @@ class Lab1:
         # Відповідність заданому закону розподілу перевірити за допомогою критерію згоди ксі^2.
         _, p = stats.normaltest(self.randoms)
         approved = '' if p < 0.05 else 'not '
-        print(f'Distribution is { approved }normal')
+        print(f'Distribution is { approved }normal (pvalue: {p})')
 
     def __repr__(self):
         return f'sigma: {self.sigma} \nalpha: {self.alpha}'
