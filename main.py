@@ -27,17 +27,14 @@ class Lab1:
 
     def draw_hist(self):
         # Побудувати гістограму частот. По виду гістограми частот визначити вид закону розподілу -> нормальний (Гауса)
-        gaussian_distribution = np.random.normal(size=self.size, loc=self.mean, scale=self.dispersion)
-        seaborn.displot(gaussian_distribution, kind='kde', color='g')
-        plt.show()
-        seaborn.histplot(self.randoms, kde=True)
+        seaborn.histplot(self.randoms, kde=True, bins=18)
         plt.show()
 
     def check(self):
         # Відповідність заданому закону розподілу перевірити за допомогою критерію згоди ксі^2.
         _, p = stats.normaltest(self.randoms)
-        approved = '' if p < 0.05 else 'not '
-        print(f'Distribution is { approved }normal (pvalue: {p})')
+        approved = '' if p < 0.05 else 'not'
+        print(f'Null hypothesis can{ approved } be rejected (p-value: {p})')
 
     def __repr__(self):
         return f'sigma: {self.sigma} \nalpha: {self.alpha}'
